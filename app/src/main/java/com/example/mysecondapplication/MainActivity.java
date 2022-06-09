@@ -8,18 +8,18 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
     private EditText edt_contenu;
     private  Button btn_save;
     private Button btn_load;
-    private Button edt_saisie;
+    private EditText edt_saisie;
 
 
     private SharedPreferences shp;
 
-    @SuppressLint("WrongViewCast")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String valeur = shp.getString("valeur_saisie", null );
+                Toast.makeText(MainActivity.this, valeur , Toast.LENGTH_LONG).show();
 
             }
         });
