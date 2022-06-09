@@ -1,9 +1,11 @@
 package com.example.mysecondapplication;
 
 import android.content.Context;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.TextView;
 
 import java.util.List;
 
@@ -34,6 +36,18 @@ public class EtudiantAdapter extends BaseAdapter {
 
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
-        return null;
+
+        if(view==null){
+            LayoutInflater inflater = LayoutInflater.from(this.context);
+            view = inflater.inflate(R.layout.row, null);
+        }
+        TextView tv_n = view.findViewById(R.id.tv_nom);
+        TextView tv_p = view.findViewById(R.id.tv_prenom);
+
+        Etudiant current = (Etudiant) getItem(i);
+        tv_n.setText(current.getNom());
+        tv_p.setText(current.getPrenom());
+
+        return view;
     }
 }
